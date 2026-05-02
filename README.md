@@ -68,7 +68,7 @@ $: linnDrum("k...s...k.r.s..h").bank("RolandTR909")
 
 ---
 
-### `arp(notes, style, rate)`
+### `swArp(notes, style, rate)`
 
 Arpeggiator for synthwave melodic patterns.
 
@@ -83,15 +83,15 @@ Arpeggiator for synthwave melodic patterns.
 
 ```javascript
 // Rising 16th-note arp on a minor seventh chord
-$: arp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
+$: swArp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
 
 // Up-down arp with external swing
-$: arp(['c4','eb4','g4','bb4'], 'updown', '1/16')
+$: swArp(['c4','eb4','g4','bb4'], 'updown', '1/16')
      .set.out(swLead)
      .swing(0.55)
 
 // Slower random 8th-note arp through a bass octave
-$: arp(['c3','eb3','g3'], 'random', '1/8').set.out(swBass)
+$: swArp(['c3','eb3','g3'], 'random', '1/8').set.out(swBass)
 ```
 
 ---
@@ -145,7 +145,7 @@ rather than `blockArrange`'s F/B/R/0 model.
 ```javascript
 const kick  = s("bd").bank("RolandTR909")
 const pad   = gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').set.out(swSaw)
-const lead  = arp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
+const lead  = swArp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
 const bass  = note("<c2 eb2 ab2 g2>").set.out(swBass)
 
 $: swArrange([
@@ -181,7 +181,7 @@ Clean triangle lead — bright with subtle chorus via delay and light vibrato.
 Best for arps and melodic lines.
 
 ```javascript
-$: arp(['c5','eb5','g5','bb5'], 'up', '1/16').set.out(swLead)
+$: swArp(['c5','eb5','g5','bb5'], 'up', '1/16').set.out(swLead)
 ```
 
 ### `swBass`
@@ -206,7 +206,7 @@ $: stack(
 const kick   = linnDrum("k...s...k...s...")
 const hats   = linnDrum("..hh..hh..hh..hh")
 const pad    = gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').set.out(swSaw)
-const melody = arp(['c5','eb5','g5','bb5'], 'updown', '1/16').set.out(swLead)
+const melody = swArp(['c5','eb5','g5','bb5'], 'updown', '1/16').set.out(swLead)
 const bass   = note("<c2 eb2 ab2 g2>").set.out(swBass)
 
 $: swArrange([

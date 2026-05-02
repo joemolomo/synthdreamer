@@ -1182,10 +1182,10 @@ window.linnDrum = function(pat) {
  * @param {string}   rate   - subdivision e.g. '1/16', '1/8'
  * @returns {Pattern}
  * @example
- * $: arp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
- * $: arp(['c4','eb4','g4','bb4'], 'updown', '1/16').set.out(swLead).swing(0.55)
+ * $: swArp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
+ * $: swArp(['c4','eb4','g4','bb4'], 'updown', '1/16').set.out(swLead).swing(0.55)
  */
-window.arp = function(notes, style = 'up', rate = '1/16') {
+window.swArp = function(notes, style = 'up', rate = '1/16') {
   const [num, den] = rate.split('/').map(Number)
   const stepsPerCycle = den / num
 
