@@ -1213,14 +1213,15 @@ window.swArp = function(notes, style = 'up', rate = '1/16') {
  * Gated pad — classic synthwave pulsing chord sound.
  * Chops a chord pattern at the given rate with ADSR shaping.
  * Pair with swSaw or a supersaw/pad synth for best results.
- * @param {string} chordPat - Strudel chord pattern e.g. '<Cm7 Fm7 Gm7>'
+ * @param {string} chordPat - comma-separated notes per chord, alternating with <>
+ *                           e.g. '<c3,eb3,g3,bb3 f3,ab3,c4,eb4>'
  * @param {string} rate     - gate rate e.g. '1/8', '1/4'
  * @param {number} atk      - attack in seconds (default 0.01)
  * @param {number} rel      - release in seconds (default 0.1)
  * @returns {Pattern}
  * @example
- * $: gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').set.out(swSaw)
- * $: gatePad('<Cm7 Fm7>', '1/16', 0.005, 0.08).set.out(swSaw).room(0.9)
+ * $: gatePad('<c3,eb3,g3,bb3 f3,ab3,c4,eb4>', '1/8').set.out(swSaw)
+ * $: gatePad('c3,eb3,g3,bb3', '1/16', 0.005, 0.08).set.out(swSaw)
  */
 window.gatePad = function(chordPat, rate = '1/8', atk = 0.01, rel = 0.1) {
   const [num, den] = rate.split('/').map(Number)

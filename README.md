@@ -103,20 +103,20 @@ rhythmically and shapes each pulse with ADSR parameters.
 
 | Param | Type | Default | Description |
 |---|---|---|---|
-| `chordPat` | `string` | — | Strudel chord pattern, e.g. `'<Cm7 Fm7 Gm7>'` |
+| `chordPat` | `string` | — | Comma-separated notes, e.g. `'c3,eb3,g3,bb3'` or alternating `'<c3,eb3,g3 f3,ab3,c4>'` |
 | `rate` | `string` | `'1/8'` | Gate rate, e.g. `'1/8'`, `'1/4'` |
 | `atk` | `number` | `0.01` | Attack time in seconds |
 | `rel` | `number` | `0.1` | Release/decay time in seconds |
 
 ```javascript
 // Standard 8th-note gated pad through a four-chord synthwave progression
-$: gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').set.out(swSaw)
+$: gatePad('<c3,eb3,g3,bb3 f3,ab3,c4,eb4 ab2,c3,eb3,g3 g2,bb2,d3,f3>', '1/8').set.out(swSaw)
 
 // Tighter 16th-note gate with very short release
-$: gatePad('<Cm7 Fm7>', '1/16', 0.005, 0.06).set.out(swSaw).room(0.9)
+$: gatePad('c3,eb3,g3,bb3', '1/16', 0.005, 0.06).set.out(swSaw).room(0.9)
 
 // Slow quarter-note pulse — more atmospheric
-$: gatePad('<Cm7 Ab7>', '1/4', 0.02, 0.3).set.out(swSaw)
+$: gatePad('<c3,eb3,g3 ab2,c3,eb3>', '1/4', 0.02, 0.3).set.out(swSaw)
 ```
 
 ---
