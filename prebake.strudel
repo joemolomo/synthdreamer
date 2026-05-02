@@ -1295,9 +1295,10 @@ window.swArrange = function(patArr) {
  * swSaw — detuned supersaw pad.
  * Warm, wide stereo image, heavy reverb. Classic synthwave wall-of-sound.
  * @example
- * $: note("<Cm7 Fm7 Ab7 Gm7>").set.out(swSaw).slow(4)
+ * $: gatePad(['c3,eb3,g3','g2,bb2,d3'], '1/8').swSaw()
  */
-window.swSaw = s("supersaw")
+register('swSaw', (pat) => pat
+  .s("supersaw")
   .unison(3)
   .detune(0.4)
   .room(0.85)
@@ -1305,14 +1306,16 @@ window.swSaw = s("supersaw")
   .lpf(3000)
   .lpq(0.3)
   .gain(0.85)
+)
 
 /**
  * swLead — clean triangle/sine lead for arps and melodies.
  * Bright with a subtle chorus feel via delay and light vibrato.
  * @example
- * $: arp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
+ * $: swArp(['c4','eb4','g4','bb4'], 'up', '1/16').swLead()
  */
-window.swLead = s("triangle")
+register('swLead', (pat) => pat
+  .s("triangle")
   .vib(5)
   .vibmod(0.025)
   .delay(0.35)
@@ -1320,14 +1323,16 @@ window.swLead = s("triangle")
   .delayfeedback(0.35)
   .room(0.2)
   .gain(0.9)
+)
 
 /**
  * swBass — gritty sub bass.
  * Tight attack, slight harmonic distortion via diode waveshaping.
  * @example
- * $: note("c2 ~ c2 ~ eb2 ~ f2 ~").set.out(swBass)
+ * $: note("c2 ~ c2 ~ eb2 ~ f2 ~").swBass()
  */
-window.swBass = s("sawtooth")
+register('swBass', (pat) => pat
+  .s("sawtooth")
   .lpf(380)
   .lpq(2)
   .attack(0.005)
@@ -1336,3 +1341,4 @@ window.swBass = s("sawtooth")
   .release(0.08)
   .diode(1.8)
   .gain(0.95)
+)

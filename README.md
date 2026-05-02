@@ -83,15 +83,15 @@ Arpeggiator for synthwave melodic patterns.
 
 ```javascript
 // Rising 16th-note arp on a minor seventh chord
-$: swArp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
+$: swArp(['c4','eb4','g4','bb4'], 'up', '1/16').swLead()
 
 // Up-down arp with external swing
 $: swArp(['c4','eb4','g4','bb4'], 'updown', '1/16')
-     .set.out(swLead)
+     .swLead()
      .swing(0.55)
 
 // Slower random 8th-note arp through a bass octave
-$: swArp(['c3','eb3','g3'], 'random', '1/8').set.out(swBass)
+$: swArp(['c3','eb3','g3'], 'random', '1/8').swBass()
 ```
 
 ---
@@ -110,13 +110,13 @@ rhythmically and shapes each pulse with ADSR parameters.
 
 ```javascript
 // Standard 8th-note gated pad through a four-chord synthwave progression
-$: gatePad('<c3,eb3,g3,bb3 f3,ab3,c4,eb4 ab2,c3,eb3,g3 g2,bb2,d3,f3>', '1/8').set.out(swSaw)
+$: gatePad('<c3,eb3,g3,bb3 f3,ab3,c4,eb4 ab2,c3,eb3,g3 g2,bb2,d3,f3>', '1/8').swSaw()
 
 // Tighter 16th-note gate with very short release
-$: gatePad('c3,eb3,g3,bb3', '1/16', 0.005, 0.06).set.out(swSaw).room(0.9)
+$: gatePad('c3,eb3,g3,bb3', '1/16', 0.005, 0.06).swSaw().room(0.9)
 
 // Slow quarter-note pulse — more atmospheric
-$: gatePad('<c3,eb3,g3 ab2,c3,eb3>', '1/4', 0.02, 0.3).set.out(swSaw)
+$: gatePad('<c3,eb3,g3 ab2,c3,eb3>', '1/4', 0.02, 0.3).swSaw()
 ```
 
 ---
@@ -144,9 +144,9 @@ rather than `blockArrange`'s F/B/R/0 model.
 
 ```javascript
 const kick  = s("bd").bank("RolandTR909")
-const pad   = gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').set.out(swSaw)
-const lead  = swArp(['c4','eb4','g4','bb4'], 'up', '1/16').set.out(swLead)
-const bass  = note("<c2 eb2 ab2 g2>").set.out(swBass)
+const pad   = gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').swSaw()
+const lead  = swArp(['c4','eb4','g4','bb4'], 'up', '1/16').swLead()
+const bass  = note("<c2 eb2 ab2 g2>").swBass()
 
 $: swArrange([
      [kick,  "<0 I I D D D D B B O>"],
@@ -169,10 +169,10 @@ Detuned supersaw pad — warm, wide stereo image, heavy reverb.
 
 ```javascript
 // Slow chord pad
-$: note("<Cm7 Fm7 Ab7 Gm7>").set.out(swSaw).slow(4)
+$: note("<Cm7 Fm7 Ab7 Gm7>").swSaw().slow(4)
 
 // Gated version
-$: gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').set.out(swSaw)
+$: gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').swSaw()
 ```
 
 ### `swLead`
@@ -181,7 +181,7 @@ Clean triangle lead — bright with subtle chorus via delay and light vibrato.
 Best for arps and melodic lines.
 
 ```javascript
-$: swArp(['c5','eb5','g5','bb5'], 'up', '1/16').set.out(swLead)
+$: swArp(['c5','eb5','g5','bb5'], 'up', '1/16').swLead()
 ```
 
 ### `swBass`
@@ -189,12 +189,12 @@ $: swArp(['c5','eb5','g5','bb5'], 'up', '1/16').set.out(swLead)
 Gritty sub bass — tight attack, slight harmonic distortion via waveshaping.
 
 ```javascript
-$: note("c2 ~ c2 ~ eb2 ~ f2 ~").set.out(swBass)
+$: note("c2 ~ c2 ~ eb2 ~ f2 ~").swBass()
 
 // Pair with kick for punch
 $: stack(
      linnDrum("k...s...k...s..."),
-     note("c2 ~ ~ ~ ~ ~ eb2 ~").set.out(swBass)
+     note("c2 ~ ~ ~ ~ ~ eb2 ~").swBass()
    )
 ```
 
@@ -205,9 +205,9 @@ $: stack(
 ```javascript
 const kick   = linnDrum("k...s...k...s...")
 const hats   = linnDrum("..hh..hh..hh..hh")
-const pad    = gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').set.out(swSaw)
-const melody = swArp(['c5','eb5','g5','bb5'], 'updown', '1/16').set.out(swLead)
-const bass   = note("<c2 eb2 ab2 g2>").set.out(swBass)
+const pad    = gatePad('<Cm7 Fm7 Ab7 Gm7>', '1/8').swSaw()
+const melody = swArp(['c5','eb5','g5','bb5'], 'updown', '1/16').swLead()
+const bass   = note("<c2 eb2 ab2 g2>").swBass()
 
 $: swArrange([
      [kick,   "<0 I D D D D D B B O>"],
