@@ -1202,8 +1202,8 @@ window.swArp = function(notes, style = 'up', rate = '1/16') {
     seq = [...notes, ...[...notes].reverse().slice(1, -1)]
   }
 
-  // fast factor: stepsPerCycle total events, spread across seq.length notes
-  return note(seq.join(' ')).fast(stepsPerCycle / seq.length)
+  // sequence() builds a proper Pattern from JS values without mini-notation parsing
+  return note(sequence(...seq)).fast(stepsPerCycle / seq.length)
 }
 
 
@@ -1226,7 +1226,7 @@ window.gatePad = function(chordPat, rate = '1/8', atk = 0.01, rel = 0.1) {
   const [num, den] = rate.split('/').map(Number)
   const stepsPerCycle = den / num
 
-  return note(chordPat)
+  return note(mini(chordPat))
     .struct(`x!${stepsPerCycle}`)
     .attack(atk)
     .decay(rel)
