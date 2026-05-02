@@ -1227,7 +1227,7 @@ window.gatePad = function(chordPat, rate = '1/8', atk = 0.01, rel = 0.1) {
   const stepsPerCycle = den / num
 
   return note(mini(chordPat))
-    .struct(`x!${stepsPerCycle}`)
+    .struct(sequence(...new Array(stepsPerCycle).fill(true)))
     .attack(atk)
     .decay(rel)
     .sustain(0)
